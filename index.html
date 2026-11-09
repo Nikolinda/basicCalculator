@@ -7,6 +7,37 @@
     <title>Kaulkulačka</title>
 </head>
 <body>
+    
+<div class="wrapper">
+  <div class="calc">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button class="btn-gray" data-key="Escape" onclick="clearAll()">AC</button>
+      <button class="btn-gray" data-key="%" onclick="plusMinus()">+/-</button>
+      <button class="btn-gray" data-key="%" onclick="percent()">%</button>
+      <button class="btn-orange" data-key="/" onclick="setOp('/')">÷</button>
+
+      <button class="btn-dark" data-key="7" onclick="input('7')">7</button>
+      <button class="btn-dark" data-key="8" onclick="input('8')">8</button>
+      <button class="btn-dark" data-key="9" onclick="input('9')">9</button>
+      <button class="btn-orange" data-key="*" onclick="setOp('*')">×</button>
+
+      <button class="btn-dark" data-key="4" onclick="input('4')">4</button>
+      <button class="btn-dark" data-key="5" onclick="input('5')">5</button>
+      <button class="btn-dark" data-key="6" onclick="input('6')">6</button>
+      <button class="btn-orange" data-key="-" onclick="setOp('-')">−</button>
+
+      <button class="btn-dark" data-key="1" onclick="input('1')">1</button>
+      <button class="btn-dark" data-key="2" onclick="input('2')">2</button>
+      <button class="btn-dark" data-key="3" onclick="input('3')">3</button>
+      <button class="btn-orange" data-key="+" onclick="setOp('+')">+</button>
+
+      <button class="btn-dark btn-zero" data-key="0" onclick="input('0')">0</button>
+      <button class="btn-dark" data-key="." onclick="input('.')">,</button>
+      <button class="btn-orange" data-key="Enter" onclick="calculate()">=</button>
+    </div>
+  </div>
+
 
     <script src="script.js"></script>
     
