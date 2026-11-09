@@ -4,6 +4,7 @@ let current = '0';
 let prev = null;
 let op = null;
 let reset = false;
+let history = [];
 
 
 function update() { display.textContent = current; }
@@ -44,3 +45,28 @@ function calculate() {
 
 function plusMinus() { current = String(-parseFloat(current)); update(); }
 function percent() { current = String(parseFloat(current) / 100); update(); }
+
+// HISTÓRIA
+function addToHistory(expr, res) {
+  history.unshift({ expr, res });
+  if (history.length > 20) history.pop();
+  renderHistory();
+}
+
+function renderHistory() {
+  if (history.length === 0) {
+    historyList.innerHTML = '<p class="empty">Zatiaľ žiadne výpočty</p>';
+    return;
+  }
+  historyList.innerHTML = history.map(h => 
+    `<div class="history-item" onclick="useHistory('${h.res}')"><span>${h.expr} =</span><strong>${h.res}</strong></div>`
+  ).join('');
+}
+
+function useHistory(val) { current = val; update(); }
+function clearHistory() { history = []; renderHistory(); }
+
+function highlightKey(k) {
+  const btn = document.querySelector(`[data-key="${k}"]`);
+  if (btn) { btn.classList.add('active'); setTimeout(() => btn.classList.remove('active'), 150); }
+}
