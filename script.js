@@ -70,3 +70,17 @@ function highlightKey(k) {
   const btn = document.querySelector(`[data-key="${k}"]`);
   if (btn) { btn.classList.add('active'); setTimeout(() => btn.classList.remove('active'), 150); }
 }
+
+document.addEventListener('keydown', (e) => {
+  const key = e.key;
+  if (key >= '0' && key <= '9') { input(key); return; }
+  if (key === '.' || key === ',') { input('.'); return; }
+  if (key === '+' || key === '-' || key === '*' || key === '/') { setOp(key); return; }
+  if (key === 'Enter' || key === '=') { e.preventDefault(); calculate(); return; }
+  if (key === 'Backspace') {
+    if (current.length > 1) current = current.slice(0, -1); else current = '0';
+    update(); return;
+  }
+  if (key === 'Escape' || key === 'Delete' || key.toLowerCase() === 'c') { clearAll(); return; }
+  if (key === '%') { percent(); return; }
+});
